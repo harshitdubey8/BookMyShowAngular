@@ -22,6 +22,7 @@ export class UpdateProfileComponent implements OnInit {
     this.userEmail = sessionStorage.getItem('userEmail');
     this.getUserDetails(this.userEmail);
   }
+
   handleChange(event: any): void {
     const { name, value } = event.target;
     this.formData[name] = value;

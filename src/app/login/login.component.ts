@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user-data.service';
 
@@ -8,6 +8,8 @@ import { UserService } from '../user-data.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  @Input() getUserDetails: any = null;
+
   email: string = '';
   password: string = '';
   errorMessage: string = ''; // Add an error message property
@@ -34,7 +36,7 @@ export class LoginComponent {
         console.log(resData);
         if (resData.message === 'User already exists') {
           sessionStorage.setItem('userEmail', this.email);
-
+          this.getUserDetails?.(this.email);
           // Navigate to home page
           this.router.navigate(['/home']);
         } else {

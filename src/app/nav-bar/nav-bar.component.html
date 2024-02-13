@@ -4,14 +4,19 @@
   /></a>
   <input class="Search-bar" type="text" placeholder="Search for the movie " />
 
-  <a routerLink="/login"><button class="CustomButton default">Login</button></a>
-  <a routerLink="/SignUp"
+  <a *ngIf="!user.email" routerLink="/login"
+    ><button class="CustomButton default">Login</button></a
+  >
+
+  <a *ngIf="!user.email" routerLink="/SignUp"
     ><button class="CustomButton default">Register</button></a
   >
-  <a routerLink="/profile"
+  <a *ngIf="user.email" routerLink="/profile"
     ><button class="CustomButton default">Profile</button></a
   >
 
-  <button class="CustomButton default">logout</button>
-  <a routerLink="/Admin"><button class="CustomButton default">Admin</button></a>
+  <button *ngIf="user.email" class="CustomButton default">logout</button>
+  <a *ngIf="user.userType === 'Admin'" routerLink="/Admin"
+    ><button class="CustomButton default">Admin</button></a
+  >
 </nav>

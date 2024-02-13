@@ -3,6 +3,17 @@
     <img src="assets/Images/banner.jpeg" alt="" />
   </div>
 
+  <div class="SearchMovies">
+    <input
+      class="InputField"
+      type="text"
+      placeholder="Search for the movie "
+      [ngModel]="SearchValue"
+      name="SearchValue"
+      (change)="handleSearchChange($event)"
+    />
+  </div>
+
   <div>
     <h2>Recommended Movies</h2>
     <div class="RecommendedMovies">

@@ -44,7 +44,6 @@ export class MovieDataService {
   }
 
   // Confirm Booking
-
   createBooking(bookingObj: any) {
     const url = 'http://localhost:80/api/bookings';
     return this.http.post(url, bookingObj);

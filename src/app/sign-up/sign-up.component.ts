@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user-data.service';
 
@@ -9,6 +9,7 @@ import { UserService } from '../user-data.service';
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
+  @Input() getUserDetails: any = null;
   username: string = '';
   email: string = '';
   password: string = '';
@@ -46,6 +47,7 @@ export class SignUpComponent {
         // Navigate to home if signup successful
         if (resData.message === 'User created successfully') {
           sessionStorage.setItem('userEmail', this.email);
+          this.getUserDetails?.(this.email);
           this.router.navigate(['/home']);
         } else {
           this.errorMessage = 'Error: ' + resData.message;
