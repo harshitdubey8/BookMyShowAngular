@@ -1,0 +1,25 @@
+.booking-success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BookingCard {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 20px;
+  width: 500px;
+  align-items: center;
+  background-color: #fff;
+  margin-top: 40px;
+  border-radius: 16px;
+}
+
+.booking-success-container h2 {
+  color: #f84464;
+}
+
+.booking-success-container p {
+  margin-bottom: 20px;
+}

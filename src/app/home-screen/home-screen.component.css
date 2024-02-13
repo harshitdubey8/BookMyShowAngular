@@ -1,0 +1,26 @@
+.RecommendedMovies {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+.TrendingMovies {
+  display: flex;
+  background-color: #2b3149;
+  padding: 30px;
+}
+
+.UpcomingMovies {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.Home {
+  padding: 20px;
+}

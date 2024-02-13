@@ -1,0 +1,51 @@
+<div class="Home">
+  <div class="Banner">
+    <img src="assets/Images/banner.jpeg" alt="" />
+  </div>
+
+  <div>
+    <h2>Recommended Movies</h2>
+    <div class="RecommendedMovies">
+      <div *ngFor="let movie of recommendedMovies">
+        <a [routerLink]="['/movie-details', movie._id]">
+          <app-custom-card
+            [imageUrl]="movie.posterUrl"
+            [title]="movie.movieTitle"
+            [description]="movie.movieDesc"
+            [genre]="movie.genre"
+          ></app-custom-card>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Trending Movies</h2>
+    <div class="TrendingMovies">
+      <div *ngFor="let movie of trendingMovies">
+        <a [routerLink]="['/movie-details', movie._id]">
+          <app-custom-card
+            [imageUrl]="movie.posterUrl"
+            [title]="movie.movieTitle"
+            [description]="movie.movieDesc"
+            [genre]="movie.genre"
+          ></app-custom-card>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Upcoming Movies</h2>
+    <div class="UpcomingMovies">
+      <div *ngFor="let movie of upcomingMovies">
+        <app-custom-card
+          [imageUrl]="movie.posterUrl"
+          [title]="movie.movieTitle"
+          [description]="movie.movieDesc"
+          [genre]="movie.genre"
+        ></app-custom-card>
+      </div>
+    </div>
+  </div>
+</div>

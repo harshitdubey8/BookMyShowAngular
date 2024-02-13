@@ -1,0 +1,47 @@
+<div class="signup-screen">
+  <form class="signup-card" (ngSubmit)="signUp()">
+    <h2>Sign up to get Started</h2>
+    <input
+      class="InputField"
+      placeholder="Username"
+      type="text"
+      [(ngModel)]="username"
+      name="username"
+      required
+    />
+    <input
+      class="InputField"
+      placeholder="Email"
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      required
+    />
+    <input
+      class="InputField"
+      placeholder="Phone"
+      type="number"
+      [(ngModel)]="phone"
+      name="phone"
+      required
+    />
+    <input
+      class="InputField"
+      placeholder="Profile URL"
+      type="text"
+      [(ngModel)]="profilePicture"
+      name="profilePicture"
+    />
+    <input
+      class="InputField"
+      placeholder="Password"
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      required
+    />
+    <button class="custom-button" type="submit">Register</button>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <p>{{ result }}</p>
+  </form>
+</div>

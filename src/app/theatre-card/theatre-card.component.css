@@ -1,0 +1,28 @@
+.TheatreCardContainer {
+  display: flex;
+  padding: 50px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #fff;
+}
+
+.TheatreData {
+  display: flex;
+  flex-direction: column;
+}
+
+.CardSubHeading {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.book-button {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.book-button:hover {
+  background-color: #ff4f4f;
+}

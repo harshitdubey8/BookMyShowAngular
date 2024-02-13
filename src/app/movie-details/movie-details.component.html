@@ -1,0 +1,130 @@
+<!-- movie-profile-card.component.html -->
+<div class="movie-profile-card">
+  <div class="cover-picture">
+    <!-- Vignette effect applied using CSS filter -->
+    <div class="vignette-overlay"></div>
+    <!-- Render the cover picture -->
+    <img
+      [src]="movieData?.posterUrl"
+      alt="Movie Cover"
+      class="cover-picture-image"
+    />
+    <!-- Render the profile picture -->
+    <div class="profile-picture">
+      <img
+        [src]="movieData?.posterUrl"
+        alt="Profile Picture"
+        class="profile-picture-image"
+      />
+    </div>
+    <!-- Movie details displayed on top of the cover picture -->
+    <div class="movie-details">
+      <h2>{{ movieData?.movieTitle }}</h2>
+
+      <p>{{ movieData?.duration }} mins| {{ movieData?.genre }}</p>
+
+      <p>{{ movieData?.movieDesc }}</p>
+
+      <!-- Pink book now button -->
+      <button class="book-now-button">Book Now</button>
+    </div>
+  </div>
+
+  <!-- finish this  -->
+  <div class="Cast">
+    <h2 class="Headings">Cast</h2>
+    <div *ngFor="let item of movieData?.cast">
+      <ul class="SubHeading">
+        {{
+          item
+        }}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Somehow done -->
+  <div class="Review">
+    <div class="Reviews" *ngFor="let item of reviews">
+      <app-review-card
+        [username]="item.userId.username"
+        [message]="item.message"
+      ></app-review-card>
+    </div>
+  </div>
+
+  <!-- finish this  -->
+
+  <div className="AddReviewCard">
+    <form className="AddAReview">
+      <label>Rate The Movie Between 1-5</label>
+      <input
+        className="InputField"
+        placeholder="Your Rating"
+        type="number"
+        [(ngModel)]="reviewRating"
+        (change)="handleReviewRatingChange($event)"
+      />
+      <textarea
+        className="InputField"
+        name="reviewData"
+        cols="20"
+        rows="5"
+        placeholder="Add Your Review"
+        [(ngModel)]="reviewMessage"
+        (change)="handleReviewMessageChange($event)"
+      ></textarea>
+      <button (click)="addReview()">Add Review</button>
+    </form>
+  </div>
+
+  <div *ngIf="isModalOpen === false">
+    <div class="Theatres" *ngFor="let theatre of theatreData">
+      <div class="TheatreCard">
+        <app-theatre-card
+          [name]="theatre?.theatreName"
+          [location]="theatre?.theatreLocation"
+          [price]="theatre?.moviePrices"
+        ></app-theatre-card>
+        <button (click)="selectedTheatreDetails(theatre)">Book Tickets</button>
+      </div>
+    </div>
+
+    <div *ngIf="isModalOpen" class="BookingCard">
+      <h2>booking</h2>
+      <h2 class="Headings">Movie : {{ movieData?.movieTitle }}</h2>
+      <p class="SubHeading">Theatre : {{ selectedTheatreData?.theatreName }}</p>
+      <p class="SubHeading">
+        location : {{ selectedTheatreData?.theatreLocation }}
+      </p>
+      <form>
+        <label>Enter the number of tickets</label>
+        <input
+          class="InputField"
+          type="number"
+          max="5"
+          min="1"
+          name="ticketsCount"
+          [(ngModel)]="ticketCount"
+          (change)="handleTicketCountChange($event)"
+        />
+        <hr />
+
+        <p class="SubHeading">
+          Grand Total :
+          <!-- <span class="Headings">
+          {{
+            (selectedTheatreData?.moviePrices
+              ? parseToFloat(selectedTheatreData.moviePrices)
+              : 0) * ticketCount
+          }}
+        </span> -->
+        </p>
+        <div class="BookingButtons">
+          <button (click)="OnBookingConfirm()">Confirm Booking</button>
+
+          <button (click)="onCancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

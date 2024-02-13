@@ -1,0 +1,206 @@
+<div class="AdminScreen">
+  <div>
+    <form class="AddMovieCard" (ngSubmit)="addMovie()">
+      <h2>Add A Movie</h2>
+      <label>Movie Title:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="movieTitle"
+        [(ngModel)]="formData.movieTitle"
+      />
+
+      <label>Movie Description:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="movieDesc"
+        [(ngModel)]="formData.movieDesc"
+      />
+
+      <label>Genre:</label>
+      <select class="InputField" name="genre" [(ngModel)]="formData.genre">
+        <option value="">Select Genre</option>
+        <option value="Action">Action</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Horror">Horror</option>
+        <option value="Drama">Drama</option>
+      </select>
+
+      <label>Duration (Mins):</label>
+      <input
+        class="InputField"
+        type="number"
+        name="duration"
+        [(ngModel)]="formData.duration"
+      />
+
+      <label>Release Date:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="releaseDate"
+        [(ngModel)]="formData.releaseDate"
+      />
+
+      <label>Poster URL:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="posterUrl"
+        [(ngModel)]="formData.posterUrl"
+      />
+
+      <label>Rating:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="rating"
+        [(ngModel)]="formData.rating"
+      />
+
+      <label>Type:</label>
+      <select class="InputField" name="type" [(ngModel)]="formData.type">
+        <option value="">Select Type</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Trending">Trending</option>
+        <option value="Recommended">Recommended</option>
+      </select>
+
+      <button type="submit">Add Movie</button>
+      <p></p>
+    </form>
+  </div>
+  <div>
+    <div>
+      <div class="MoviesTable">
+        <h2>All Movies</h2>
+        <button class="CustomButton" (click)="getMovieData()">Refresh</button>
+        <ng-container *ngIf="allMovies.length === 0; else moviesTable">
+          <p>No movies available</p>
+        </ng-container>
+        <ng-template #moviesTable>
+          <table class="MovieTable">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Genre</th>
+                <th>Duration</th>
+                <th>Release Date</th>
+                <th>Type</th>
+                <th>Rating</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movie of allMovies; let i = index">
+                <td>{{ movie.movieTitle }}</td>
+                <td>{{ movie.movieDesc }}</td>
+                <td>{{ movie.genre }}</td>
+                <td>{{ movie.duration }}</td>
+                <td>{{ movie.releaseDate }}</td>
+                <td>{{ movie.type }}</td>
+                <td>{{ movie.rating }}</td>
+                <td>
+                  <div>
+                    <button
+                      class="CustomButton"
+                      (click)="deleteMovie(movie._id)"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      class="CustomButton"
+                      (click)="editMovieButton(movie._id)"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div>
+    <form class="AddMovieCard" (ngSubmit)="updateMovie()">
+      <h2>Update A Movie</h2>
+      <label>Movie Title:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="movieTitle"
+        [(ngModel)]="updateForm.movieTitle"
+      />
+
+      <label>Movie Description:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="movieDesc"
+        [(ngModel)]="updateForm.movieDesc"
+      />
+
+      <label>Genre:</label>
+      <select class="InputField" name="genre" [(ngModel)]="updateForm.genre">
+        <option value="">Select Genre</option>
+        <option value="Action">Action</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Horror">Horror</option>
+        <option value="Drama">Drama</option>
+      </select>
+
+      <label>Duration (Mins):</label>
+      <input
+        class="InputField"
+        type="number"
+        name="duration"
+        [(ngModel)]="updateForm.duration"
+      />
+
+      <label>Release Date:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="releaseDate"
+        [(ngModel)]="updateForm.releaseDate"
+      />
+
+      <label>Poster URL:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="posterUrl"
+        [(ngModel)]="updateForm.posterUrl"
+      />
+
+      <label>Rating:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="rating"
+        [(ngModel)]="updateForm.rating"
+      />
+
+      <label>Type:</label>
+      <select
+        class="InputField"
+        name="updateType"
+        [(ngModel)]="updateForm.type"
+      >
+        <option value="">Select Type</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Trending">Trending</option>
+        <option value="Recommended">Recommended</option>
+      </select>
+
+      <button type="submit">Update Movie</button>
+      <p></p>
+    </form>
+  </div>
+</div>

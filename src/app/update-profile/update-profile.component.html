@@ -1,0 +1,36 @@
+<div class="profile-container">
+  <div>
+    <button (click)="setUserDetails()">set Details</button>
+    <div class="profile-picture-container">
+      <img [src]="user?.profilePicUrl" alt="Profile" class="profile-picture" />
+    </div>
+    <form class="profile-form" (ngSubmit)="updateUserData()">
+      <h2>Update User Data</h2>
+      <label>username</label>
+      <input
+        class="InputField"
+        type="text"
+        name="username"
+        [(ngModel)]="formData.username"
+      />
+
+      <label>Profile Pic Url:</label>
+      <input
+        class="InputField"
+        type="text"
+        name="profilePicUrl"
+        [(ngModel)]="formData.profilePicUrl"
+      />
+
+      <label>Phone No</label>
+      <input
+        class="InputField"
+        type="number"
+        name="phoneNo"
+        [(ngModel)]="formData.phoneNo"
+      />
+
+      <button type="submit">Update Details</button>
+    </form>
+  </div>
+</div>
