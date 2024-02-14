@@ -12,7 +12,8 @@ export class HomeScreenComponent implements OnInit {
   upcomingMovies: any[] = [];
   trendingMovies: any[] = [];
   recommendedMovies: any[] = [];
-  SearchValue: string = '';
+  searchValue: string = '';
+  genre: string = '';
 
   constructor(private dataService: MovieDataService, private router: Router) {}
 
@@ -26,35 +27,57 @@ export class HomeScreenComponent implements OnInit {
   compareString = (string1 = '', string2 = '') =>
     string1?.toLowerCase?.()?.includes?.(string2?.toLowerCase?.());
 
-  filterMovies = (movieType = '', movie: any, searchString = '') => {
+  filterMovies = (
+    movieType = '',
+    movie: any,
+    searchString = '',
+    genre = ''
+  ) => {
+    let matchesGenre = true; // By default genre matches
+
+    if (genre) {
+      matchesGenre = movie?.genre === genre;
+    }
     if (movie?.type !== movieType) {
       return false;
     }
 
     if (searchString) {
       return !!(
-        this.compareString(movie?.movieTitle, searchString) ||
-        this.compareString(movie?.movieDesc, searchString)
+        (this.compareString(movie?.movieTitle, searchString) ||
+          this.compareString(movie?.movieDesc, searchString)) &&
+        matchesGenre
       );
+    }
+
+    // If genre does not match and search string is also not there
+    if (!matchesGenre) {
+      return false;
     }
     return true;
   };
 
-  private filterMoviesByType(searchString = ''): void {
+  private filterMoviesByType(searchString = '', genre = ''): void {
     this.upcomingMovies = this.movies.filter((movie) =>
-      this.filterMovies('Upcoming', movie, searchString)
+      this.filterMovies('Upcoming', movie, searchString, genre)
     );
     this.trendingMovies = this.movies.filter((movie) =>
-      this.filterMovies('Trending', movie, searchString)
+      this.filterMovies('Trending', movie, searchString, genre)
     );
     this.recommendedMovies = this.movies.filter((movie) =>
-      this.filterMovies('Recommended', movie, searchString)
+      this.filterMovies('Recommended', movie, searchString, genre)
     );
   }
 
   handleSearchChange(event: any): void {
-    this.SearchValue = event.target.value;
-    console.log(event.target.value);
-    this.filterMoviesByType(event.target.value);
+    this.searchValue = event.target.value;
+
+    this.filterMoviesByType(event.target.value, this.genre);
+  }
+
+  handleGenreChange(event: any): void {
+    this.genre = event.target.value;
+
+    this.filterMoviesByType(this.searchValue, event.target.value);
   }
 }

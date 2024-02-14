@@ -28,3 +28,8 @@
 .SearchMovies {
   padding: 50px;
 }
+
+.SelectedGenre {
+  background-color: #fff;
+  font-size: 12px;
+}

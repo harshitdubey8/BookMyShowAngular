@@ -144,7 +144,7 @@ export class MovieDetailsComponent implements OnInit {
 
     try {
       this.dataService.createBooking(bookingObj).subscribe(() => {
-        this.router.navigate(['/success']);
+        this.router.navigate(['/success'], { replaceUrl: true });
       });
     } catch (error) {
       console.error('Error during Booking:', error);

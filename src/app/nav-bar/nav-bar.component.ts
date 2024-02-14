@@ -13,6 +13,6 @@ export class NavBarComponent {
   onLogOut(): void {
     sessionStorage.removeItem('userEmail');
     sessionStorage.removeItem('username');
-    this.router.navigate(['/login']);
+    window.location.replace('/login');
   }
 }

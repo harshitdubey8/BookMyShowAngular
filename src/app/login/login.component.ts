@@ -30,6 +30,17 @@ export class LoginComponent {
       this.errorMessage = 'Please fill in all fields'; // Set error message
       return;
     }
+    const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.email)) {
+      this.errorMessage = 'Please enter a valid email address';
+      return;
+    }
+
+    // Validate password strength (e.g., minimum length)
+    if (this.password.length < 8) {
+      this.errorMessage = 'Password must be at least 8 characters long';
+      return;
+    }
 
     this.userService.login(this.email, this.password).subscribe(
       (resData) => {
@@ -37,8 +48,8 @@ export class LoginComponent {
         if (resData.message === 'User already exists') {
           sessionStorage.setItem('userEmail', this.email);
           this.getUserDetails?.(this.email);
-          // Navigate to home page
-          this.router.navigate(['/home'], { replaceUrl: true });
+
+          window.location.replace('/home');
         } else {
           // Handle invalid user id or password
           this.errorMessage = 'Invalid User Id or Password'; // Set error message

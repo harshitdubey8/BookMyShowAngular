@@ -20,13 +20,12 @@
     <!-- Movie details displayed on top of the cover picture -->
     <div class="movie-details">
       <h2>{{ movieData?.movieTitle }}</h2>
-      <p>Rating : {{ movieData?.rating }}</p>
+      <p>Rating : {{ movieData?.rating }} /5</p>
 
       <p>{{ movieData?.duration }} mins| {{ movieData?.genre }}</p>
 
-      <p>{{ movieData?.movieDesc }}</p>
-
       <!-- Pink book now button -->
+
       <button class="book-now-button">Book Now</button>
     </div>
   </div>
@@ -43,19 +42,21 @@
     </div>
   </div>
   <hr /> -->
+  <h2 class="Headings">About Movie</h2>
+  <p>{{ movieData?.movieDesc }}</p>
 
   <h2 class="Headings">Top Reviews</h2>
   <div class="Review">
     <div class="Reviews" *ngFor="let item of reviews">
       <app-review-card
-        [username]="item.userId.username"
-        [message]="item.message"
+        [username]="item?.userId?.username || 'Anonymous'"
+        [message]="item?.message"
       ></app-review-card>
     </div>
   </div>
   <hr />
   <p *ngIf="!user.email">Please Login To make bookings and Add Review</p>
-  <div *ngIf="user.email">
+  <div *ngIf="user.email" id="MovieBooking">
     <h2 class="Headings">Add your Review</h2>
     <div class="ReviewCard">
       <form class="ReviewForm">
@@ -79,8 +80,9 @@
         <button (click)="addReview()">Add Review</button>
       </form>
     </div>
-
+    <hr />
     <div *ngIf="isModalOpen === false">
+      <h2>Theatres Available</h2>
       <div class="Theatres" *ngFor="let theatre of theatreData">
         <div class="TheatreCard">
           <app-theatre-card

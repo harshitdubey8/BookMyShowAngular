@@ -8,11 +8,25 @@
       class="InputField"
       type="text"
       placeholder="Search for the movie "
-      [ngModel]="SearchValue"
+      [ngModel]="searchValue"
       name="SearchValue"
       (change)="handleSearchChange($event)"
     />
   </div>
+
+  <select
+    class="SelectGenre"
+    name="genre"
+    [(ngModel)]="genre"
+    (change)="handleGenreChange($event)"
+  >
+    <option value="">Select Genre</option>
+    <option value="Action">Action</option>
+    <option value="Thriller">Thriller</option>
+    <option value="Romantic">Romantic</option>
+    <option value="Horror">Horror</option>
+    <option value="Drama">Drama</option>
+  </select>
 
   <div>
     <h2>Recommended Movies</h2>

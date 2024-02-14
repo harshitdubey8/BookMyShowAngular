@@ -20,15 +20,24 @@ export class SignUpComponent {
   result: string = '';
   errorMessage: string = '';
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private userService: UserService
-  ) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   signUp(): void {
     if (!this.username || !this.email || !this.password || !this.phone) {
       this.errorMessage = 'Please fill in all fields';
+      return;
+    }
+
+    // Validate email format
+    const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.email)) {
+      this.errorMessage = 'Please enter a valid email address';
+      return;
+    }
+
+    // Validate password strength (e.g., minimum length)
+    if (this.password.length < 8) {
+      this.errorMessage = 'Password must be at least 8 characters long';
       return;
     }
 
@@ -52,14 +61,15 @@ export class SignUpComponent {
         if (resData.message === 'User created successfully') {
           sessionStorage.setItem('userEmail', this.email);
           this.getUserDetails?.(this.email);
-          this.router.navigate(['/home'], { replaceUrl: true });
+          window.location.replace('/home');
         } else {
           this.errorMessage = 'Error: ' + resData.message;
         }
       },
       (error) => {
         console.error('Error during SignUp:', error);
-        this.errorMessage = 'An error occurred during sign up';
+
+        this.errorMessage = error?.error?.message;
       }
     );
   }
