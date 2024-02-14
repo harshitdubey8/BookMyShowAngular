@@ -20,6 +20,7 @@
     <!-- Movie details displayed on top of the cover picture -->
     <div class="movie-details">
       <h2>{{ movieData?.movieTitle }}</h2>
+      <p>Rating : {{ movieData?.rating }}</p>
 
       <p>{{ movieData?.duration }} mins| {{ movieData?.genre }}</p>
 
@@ -31,7 +32,7 @@
   </div>
 
   <!-- finish this  -->
-  <div class="Cast">
+  <!-- <div class="Cast">
     <h2 class="Headings">Cast</h2>
     <div *ngFor="let item of movieData?.cast">
       <ul class="SubHeading">
@@ -41,7 +42,7 @@
       </ul>
     </div>
   </div>
-  <hr />
+  <hr /> -->
 
   <h2 class="Headings">Top Reviews</h2>
   <div class="Review">
