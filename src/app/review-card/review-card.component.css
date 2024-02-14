@@ -3,7 +3,9 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #e0d2d2;
+  background-color: #fff;
+  width: fit-content;
+  margin-right: 10px;
 }
 
 .username {

@@ -1,0 +1,79 @@
+<div class="AdminScreen">
+  <div>
+    <!-- Add a new movie -->
+    <form class="AddTheaterCard" (ngSubmit)="addTheater()">
+      <h2>Add A Theater</h2>
+      <label>
+        TheatreName:
+        <input
+          class="InputField"
+          type="text"
+          name="theatreName"
+          [(ngModel)]="formData['theatreName']"
+        />
+      </label>
+      <label>
+        TheatreLocation:
+        <input
+          class="InputField"
+          type="text"
+          name="theatreLocation"
+          [(ngModel)]="formData['theatreLocation']"
+        />
+      </label>
+      <label>
+        MoviePrices:
+        <input
+          class="InputField"
+          type="text"
+          name="moviePrices"
+          [(ngModel)]="formData['moviePrices']"
+        />
+      </label>
+
+      <button type="submit" class="CustomButton">Add Theater</button>
+      <p>{{ result }}</p>
+    </form>
+  </div>
+
+  <div>
+    <div class="MoviesTable">
+      <h2>All Theatre</h2>
+      <button class="CustomButton" (click)="getTheatreData()">
+        Get Movies Data
+      </button>
+      <ng-container *ngIf="allTheaters.length === 0; else theaterTable">
+        <p>No theaters available</p>
+      </ng-container>
+      <ng-template #theaterTable>
+        <table class="MovieTable">
+          <thead>
+            <tr>
+              <th>Theatre Name</th>
+              <th>Location</th>
+              <th>Movie Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let theater of allTheaters; let i = index">
+              <td>{{ theater.theatreName }}</td>
+              <td>{{ theater.theatreLocation }}</td>
+              <td>{{ theater.moviePrices }}</td>
+              <td>
+                <div>
+                  <button
+                    class="CustomButton"
+                    (click)="deleteTheatre(theater._id)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+    </div>
+  </div>
+</div>

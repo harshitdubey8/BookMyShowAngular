@@ -41,8 +41,9 @@
       </ul>
     </div>
   </div>
+  <hr />
 
-  <!-- Somehow done -->
+  <h2 class="Headings">Top Reviews</h2>
   <div class="Review">
     <div class="Reviews" *ngFor="let item of reviews">
       <app-review-card
@@ -51,41 +52,45 @@
       ></app-review-card>
     </div>
   </div>
+  <hr />
+  <p *ngIf="!user.email">Please Login To make bookings and Add Review</p>
+  <div *ngIf="user.email">
+    <h2 class="Headings">Add your Review</h2>
+    <div class="ReviewCard">
+      <form class="ReviewForm">
+        <label class="SubHeading">Rate The Movie Between 1-5</label>
+        <input
+          class="InputField"
+          placeholder="Your Rating"
+          type="number"
+          [(ngModel)]="reviewRating"
+          (change)="handleReviewRatingChange($event)"
+        />
+        <textarea
+          class="InputField"
+          name="reviewData"
+          cols="20"
+          rows="5"
+          placeholder="Add Your Review"
+          [(ngModel)]="reviewMessage"
+          (change)="handleReviewMessageChange($event)"
+        ></textarea>
+        <button (click)="addReview()">Add Review</button>
+      </form>
+    </div>
 
-  <!-- finish this  -->
-
-  <div className="AddReviewCard">
-    <form className="AddAReview">
-      <label>Rate The Movie Between 1-5</label>
-      <input
-        className="InputField"
-        placeholder="Your Rating"
-        type="number"
-        [(ngModel)]="reviewRating"
-        (change)="handleReviewRatingChange($event)"
-      />
-      <textarea
-        className="InputField"
-        name="reviewData"
-        cols="20"
-        rows="5"
-        placeholder="Add Your Review"
-        [(ngModel)]="reviewMessage"
-        (change)="handleReviewMessageChange($event)"
-      ></textarea>
-      <button (click)="addReview()">Add Review</button>
-    </form>
-  </div>
-
-  <div *ngIf="isModalOpen === false">
-    <div class="Theatres" *ngFor="let theatre of theatreData">
-      <div class="TheatreCard">
-        <app-theatre-card
-          [name]="theatre?.theatreName"
-          [location]="theatre?.theatreLocation"
-          [price]="theatre?.moviePrices"
-        ></app-theatre-card>
-        <button (click)="selectedTheatreDetails(theatre)">Book Tickets</button>
+    <div *ngIf="isModalOpen === false">
+      <div class="Theatres" *ngFor="let theatre of theatreData">
+        <div class="TheatreCard">
+          <app-theatre-card
+            [name]="theatre?.theatreName"
+            [location]="theatre?.theatreLocation"
+            [price]="theatre?.moviePrices"
+          ></app-theatre-card>
+          <button (click)="selectedTheatreDetails(theatre)">
+            Book Tickets
+          </button>
+        </div>
       </div>
     </div>
 

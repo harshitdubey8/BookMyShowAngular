@@ -1,0 +1,62 @@
+.AddTheaterCard {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: fit-content;
+  width: 500px;
+  padding: 50px;
+  background-color: #fff;
+}
+
+.MoviesTable {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: fit-content;
+  width: 100%;
+  padding: 50px;
+  background-color: #fff;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.AdminScreen {
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+/* movies table */
+
+.MovieList {
+  margin-top: 20px;
+}
+
+.MovieTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.MovieTable th,
+.MovieTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.MovieTable th {
+  background-color: #f2f2f2;
+}
+
+.MovieTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.MovieTable tr:hover {
+  background-color: #ddd;
+}

@@ -1,9 +1,9 @@
 <div class="profile-container">
   <div>
-    <button (click)="setUserDetails()">set Details</button>
     <div class="profile-picture-container">
       <img [src]="user?.profilePicUrl" alt="Profile" class="profile-picture" />
     </div>
+    <button (click)="setUserDetails()">set Details To Update</button>
     <form class="profile-form" (ngSubmit)="updateUserData()">
       <h2>Update User Data</h2>
       <label>username</label>
@@ -32,5 +32,21 @@
 
       <button type="submit">Update Details</button>
     </form>
+  </div>
+
+  <div class="BookingsSection">
+    <h2>Your Previous Bookings</h2>
+    <button (click)="getAllBookings()">Get Bookings</button>
+
+    <div *ngFor="let booking of bookings">
+      <div class="PreviousBookingCard">
+        <p>Movie Title : {{ booking.movieId?.movieTitle }}</p>
+        <p>Genre : {{ booking.movieId?.genre }}</p>
+        <p>Theatre Name : {{ booking.theatreId?.theatreName }}</p>
+
+        <p>{{ booking.seats }}</p>
+        <p>Price Paid :{{ booking.grandTotal }}</p>
+      </div>
+    </div>
   </div>
 </div>

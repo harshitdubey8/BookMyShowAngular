@@ -2,7 +2,12 @@
   <a href="/"
     ><img class="logo" src="assets/Images/logo.jpg" alt="BookMyShow Logo"
   /></a>
-  <input class="Search-bar" type="text" placeholder="Search for the movie " />
+  <input
+    class="Search-bar"
+    disabled
+    type="text"
+    placeholder="Search for the movie "
+  />
 
   <a *ngIf="!user.email" routerLink="/login"
     ><button class="CustomButton default">Login</button></a
@@ -11,12 +16,20 @@
   <a *ngIf="!user.email" routerLink="/SignUp"
     ><button class="CustomButton default">Register</button></a
   >
+  <a *ngIf="!user.email" routerLink="/AdminReg"
+    ><button class="CustomButton default">Admin Register</button></a
+  >
   <a *ngIf="user.email" routerLink="/profile"
     ><button class="CustomButton default">Profile</button></a
   >
 
-  <button *ngIf="user.email" class="CustomButton default">logout</button>
+  <button *ngIf="user.email" class="CustomButton default" (click)="onLogOut()">
+    logout
+  </button>
   <a *ngIf="user.userType === 'Admin'" routerLink="/Admin"
-    ><button class="CustomButton default">Admin</button></a
+    ><button class="CustomButton default">Movie Admin</button></a
+  >
+  <a *ngIf="user.userType === 'Admin'" routerLink="/TheatreAdmin"
+    ><button class="CustomButton default">Theatre Admin</button></a
   >
 </nav>

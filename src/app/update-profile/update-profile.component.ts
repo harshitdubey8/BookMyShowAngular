@@ -16,6 +16,8 @@ export class UpdateProfileComponent implements OnInit {
   userEmail: String | null = null;
   error: string = '';
 
+  bookings: any[] = [];
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -26,6 +28,22 @@ export class UpdateProfileComponent implements OnInit {
   handleChange(event: any): void {
     const { name, value } = event.target;
     this.formData[name] = value;
+  }
+  getAllBookings(): void {
+    if (!this.user?._id) {
+      // If userData or _id is not available, return
+      return;
+    }
+
+    const url = `http://localhost:80/api/bookings/${this.user._id}`;
+    this.http.get<any[]>(url).subscribe(
+      (resData) => {
+        this.bookings = resData;
+      },
+      (error) => {
+        console.error('Error fetching bookings:', error);
+      }
+    );
   }
 
   // Get user Details

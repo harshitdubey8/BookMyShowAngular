@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { UserService } from '../user-data.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css',
+  selector: 'app-admin-registration',
+  templateUrl: './admin-registration.component.html',
+  styleUrl: './admin-registration.component.css',
 })
-export class SignUpComponent {
+export class AdminRegistrationComponent {
   @Input() getUserDetails: any = null;
   username: string = '';
   email: string = '';
@@ -36,7 +37,7 @@ export class SignUpComponent {
       username: this.username,
       email: this.email,
       password: this.password,
-      userType: 'customer',
+      userType: 'Admin',
       phone: this.phone,
       securityQuestion: this.securityQuestion,
       securityAnswer: this.securityAnswer,
@@ -52,7 +53,7 @@ export class SignUpComponent {
         if (resData.message === 'User created successfully') {
           sessionStorage.setItem('userEmail', this.email);
           this.getUserDetails?.(this.email);
-          this.router.navigate(['/home'], { replaceUrl: true });
+          this.router.navigate(['/home']);
         } else {
           this.errorMessage = 'Error: ' + resData.message;
         }

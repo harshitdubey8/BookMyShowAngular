@@ -22,6 +22,9 @@ import { TheatreCardComponent } from './theatre-card/theatre-card.component';
 import { SuccessScreenComponent } from './success-screen/success-screen.component';
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AdminTheaterComponent } from './admin-theater/admin-theater.component';
+import { AdminRegistrationComponent } from './admin-registration/admin-registration.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     SuccessScreenComponent,
     ReviewCardComponent,
     UpdateProfileComponent,
+    AdminTheaterComponent,
+    AdminRegistrationComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     HttpClientModule,

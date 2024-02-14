@@ -94,10 +94,16 @@
   padding: 30px;
   border-radius: 16px;
   margin-top: 10px;
+  background-color: #fff;
 }
 .TheatreCard button {
   height: 100px;
   width: 100px;
+}
+
+.TheatresContainer {
+  background-color: #2b3149;
+  padding: 30px;
 }
 
 .BookingCard {
@@ -128,16 +134,20 @@
   gap: 10px;
 }
 
-.AddReviewCard {
+.ReviewCard {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 10px;
-  background-color: #f9f9f9;
+  background-color: #fff;
   width: 500px;
 }
-.AddAReview {
+.ReviewForm {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.Review {
+  display: flex;
 }

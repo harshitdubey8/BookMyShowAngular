@@ -38,7 +38,7 @@ export class LoginComponent {
           sessionStorage.setItem('userEmail', this.email);
           this.getUserDetails?.(this.email);
           // Navigate to home page
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], { replaceUrl: true });
         } else {
           // Handle invalid user id or password
           this.errorMessage = 'Invalid User Id or Password'; // Set error message
